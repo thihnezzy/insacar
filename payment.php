@@ -1,5 +1,6 @@
 <?php
 require_once 'connexiondb.php';
+require_once 'landing-page.php'
 logged_only();
 if (!function_exists('str_contains')) {
     function str_contains($haystack, $needle) {

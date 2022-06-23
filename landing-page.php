@@ -1,9 +1,19 @@
 <?php
-    
-    if (isset($_COOKIE['login']))
-    {
-        header('Location: ./my-account.php');
-    }
+
+//Get Heroku ClearDB connection information
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"], 1);
+$active_group = 'default';
+$query_builder = TRUE;
+// Connect to DB
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+if (isset($_COOKIE['login'])) {
+    header('Location: ./my-account.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +111,7 @@
         <div class="row align-items-center justify-content-center">
 
             <div class="col-lg-6 text-white text-center ms-5">
-            INSA'Car est une entreprise française de location de voiture. Créée en 2022 par Hamza Jaait, Amine Zouaoui, Fabin Zilliox, Thinh Nguyen, Thanh Nguyen avec seulement sept voitures, aujourd’hui nous vous offrons nos services dans plus de 105 pays à travers le monde.INSA'Car s’engage à vous offrir un service premium et une voiture de location qui vous conviennent. Notre personnel hautement qualifié fera tout pour satisfaire vos envies et vos besoins.Que vous ayez besoin d'une petite voiture, d’une voiture compacte ou d’un break spacieux, notre flotte vous propose des véhicules neufs, en moyenne six mois d’ancienneté, de grandes marques telles que BMW, Audi, VW et Mercedes-Benz. INSA'Car a été élu "Leader mondial de la location de voitures pour les entreprises" en 2022 et " Meilleure société de location de voitures en France".Nous travaillons dur pour fournir un service client exceptionnel, des véhicules modernes haut de gamme. Nos agences vous offrent une sélection complète et variée de véhicules pour répondre à vos besoins de mobilité. y compris les berlines, les berlines familiales, les porteurs de personnes, les décapotables, les 4x4, les minibus et les voitures de luxe.
+                INSA'Car est une entreprise française de location de voiture. Créée en 2022 par Hamza Jaait, Amine Zouaoui, Fabin Zilliox, Thinh Nguyen, Thanh Nguyen avec seulement sept voitures, aujourd’hui nous vous offrons nos services dans plus de 105 pays à travers le monde.INSA'Car s’engage à vous offrir un service premium et une voiture de location qui vous conviennent. Notre personnel hautement qualifié fera tout pour satisfaire vos envies et vos besoins.Que vous ayez besoin d'une petite voiture, d’une voiture compacte ou d’un break spacieux, notre flotte vous propose des véhicules neufs, en moyenne six mois d’ancienneté, de grandes marques telles que BMW, Audi, VW et Mercedes-Benz. INSA'Car a été élu "Leader mondial de la location de voitures pour les entreprises" en 2022 et " Meilleure société de location de voitures en France".Nous travaillons dur pour fournir un service client exceptionnel, des véhicules modernes haut de gamme. Nos agences vous offrent une sélection complète et variée de véhicules pour répondre à vos besoins de mobilité. y compris les berlines, les berlines familiales, les porteurs de personnes, les décapotables, les 4x4, les minibus et les voitures de luxe.
             </div>
             <div class="col-lg-6 text-center">
                 <img src="./assets/car-model.jpg" alt="car model" class="img-fluid w-50 h-100">
@@ -279,7 +289,7 @@
                     <div class="col-lg-6 col-md-12 mb-4">
                         <h5 class="mb-3 text-dark fw-bold">Footer content</h5>
                         <p>
-                         INSA'Car vous propose une large gamme de services de location de véhicules. Nous voulons vous aider dans vos déplacements et vous donner accès aux véhicules correspondant à vos besoins pour tous vos déplacements. Retrouvez tous nos services, de la location en aller simple jusqu’à la réservation longue durée ainsi que les différentes options possibles et réservables (GPS, siège enfants, …).
+                            INSA'Car vous propose une large gamme de services de location de véhicules. Nous voulons vous aider dans vos déplacements et vous donner accès aux véhicules correspondant à vos besoins pour tous vos déplacements. Retrouvez tous nos services, de la location en aller simple jusqu’à la réservation longue durée ainsi que les différentes options possibles et réservables (GPS, siège enfants, …).
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4">
